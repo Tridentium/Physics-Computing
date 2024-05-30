@@ -3,6 +3,7 @@ import numpy as np
 import scipy
 import matplotlib as mp
 import matplotlib.pyplot as plt
+import time
 
 # PLOT LINE
 
@@ -19,7 +20,7 @@ def plot(x, y, colour, x_label, y_label, title, start_at_origin, graphLabel = No
         plt.xlim(xmin=0)
         plt.ylim(ymin=0)
         
-    plt.show()
+    plt.show(block=False)
 
 
 
@@ -489,4 +490,101 @@ def chal7ProjPath(u, g):
                 Y = math.sqrt(u**2 * X**2 - g * X**3 * u * math.sin(theta) + 0.25 * g**2 * X ** 4)
                 plt.plot(X, Y, "go")
     plt.show()
-chal7ProjPath(10, 10)
+#chal7ProjPath(10, 10)
+
+
+# CHALLENGE 8 - Bouncing ball
+def chal8ProjPath(u, C, theta, h, g, maxBounces, timeStep):
+    theta = math.radians(theta)
+    YVelocity = u * math.sin(theta)
+    XVelocity = u * math.cos(theta)
+    
+    XArray = []
+    YArray = []
+    
+    bounceCount = 0
+    currentIndex = 0 
+    
+    XArray.append(0)
+    YArray.append(h)
+    
+    while bounceCount <= maxBounces:
+        XAcceleration = 0 
+        YAcceleration = -g
+        XArray.append(XArray[currentIndex] + XVelocity * timeStep + 0.5 * XAcceleration * timeStep**2)
+        YArray.append(YArray[currentIndex] + YVelocity * timeStep + 0.5 * YAcceleration * timeStep**2)
+        
+        YVelocity = YVelocity + (YAcceleration) * timeStep
+        
+        if YArray[currentIndex + 1] < 0:
+            YArray[currentIndex + 1] = 0
+            YVelocity = -C * YVelocity
+            bounceCount += 1
+            
+        
+        plot(XArray, YArray, "red", "x /m", "y /m", "Challenge 8: Bounding parabola", True)
+        
+        plt.close()
+        currentIndex += 1
+    
+#chal8ProjPath(5, 0.7, 45, 10, 9.81, 6, 0.02)
+
+# Challenge 9 - drag-free model 
+
+def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
+    theta = math.radians(theta)
+    time = 0
+    
+    particleX = 0
+    particleY = h
+    
+    XArray = []
+    YArray = []
+    
+    velocityX = u*math.cos(theta)
+    velocityY = u*math.sin(theta)
+    
+    while particleY > 0:
+        particleX = velocityX * time
+        particleY = h + velocityY * time - 0.5 * g * time**2
+        
+        XArray.append(particleX)
+        YArray.append(particleY)
+        
+        time += timeStep
+        
+    plt.plot(XArray, YArray, color = "blue")
+    
+    
+    particleX = 0
+    particleY = h
+    
+    XArray = []
+    YArray = []
+    
+    velocityX = u*math.cos(theta)
+    velocityY = u*math.sin(theta)
+    
+    k = 10* (0.5 * D * dA * CSA) / M
+    print(k)
+    
+    while particleY > 0:
+        
+        AccelerationX = -(velocityX) * k * (math.sqrt(velocityX**2 + velocityY **2)) 
+        AccelerationY = -(velocityY) * k * (math.sqrt(velocityX**2 + velocityY **2)) - g
+        
+        particleX += velocityX * timeStep + 0.5 * AccelerationX * timeStep**2
+        particleY += velocityY * timeStep + 0.5 * AccelerationY * timeStep**2
+        
+        velocityX += AccelerationX * timeStep
+        velocityY += AccelerationY * timeStep
+        
+        XArray.append(particleX)
+        YArray.append(particleY)
+    
+    plt.plot(XArray, YArray, color = "red")
+    plt.show()
+    
+    
+
+chal9ProjPath(30, 20, 2, 9.81, 0.1, 0.007854, 1, 0.1, 0.01)
