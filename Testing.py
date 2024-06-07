@@ -7,20 +7,23 @@ import time
 
 # PLOT LINE
 
-def plot(x, y, colour, x_label, y_label, title, start_at_origin, graphLabel = None):
-    plt.plot(x, y, color=colour, label = graphLabel)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    plt.title(title)
+def plot(plotFrame, x, y, colour, x_label, y_label, title, start_at_origin, graphLabel = None):
+    plotFrame.plot(x, y, color=colour, label = graphLabel)
+    
+    plotFrame.axes.set_xlabel(x_label)
+    plotFrame.axes.set_ylabel(y_label)
+    plotFrame.set_title(title)
     
     if graphLabel:
-        plt.legend()
+        return
+        #plotFrame.legend()
 
     if start_at_origin:
-        plt.xlim(xmin=0)
-        plt.ylim(ymin=0)
+        return
+        #plotFrame.xlim(xmin=0)
+        #plotFrame.ylim(ymin=0)
         
-    plt.show(block=False)
+    #plt.show(block=False)
 
 
 
@@ -28,7 +31,7 @@ def plot(x, y, colour, x_label, y_label, title, start_at_origin, graphLabel = No
 
 TIMESTEP = 1
 
-def chal1ProjPath(u, theta, g, h, step):
+def chal1ProjPath(plotFrame, u, theta, g, h, step):
 
     theta = math.radians(theta)
     time = 0
@@ -51,7 +54,7 @@ def chal1ProjPath(u, theta, g, h, step):
         
         time += step
     
-    plot(XArray, YArray, "blue", "x /m", "y /m", "Challenge 1: Projectile motion model", True)
+    plot(plotFrame, XArray, YArray, "blue", "x /m", "y /m", "Challenge 1: Projectile motion model", True)
     
 # chal1ProjPath(20, 45, 9.81, 2, 0.02)
 
@@ -59,7 +62,7 @@ def chal1ProjPath(u, theta, g, h, step):
 
 # CHALLENGE 2: More sophisticated exact ('analytic') model
 
-def chal2ProjPath(u, theta, g, h, step):    
+def chal2ProjPath(plotFrame, u, theta, g, h, step):    
     theta = math.radians(theta)
     projRange = ((u**2)/g) * (math.sin(theta) * math.cos(theta) + math.cos(theta) * math.sqrt((math.sin(theta))** 2 + (2*g*h)/u**2))
     
@@ -77,7 +80,7 @@ def chal2ProjPath(u, theta, g, h, step):
     
     plt.plot(XatYHighest, YHighest, "ro")
     plt.text(XatYHighest, YHighest, "apogee")
-    plot(XArray, YArray, "blue", "x /m", "y /m", "Challenge 2: Projectile motion model", True)
+    plot(plotFrame, XArray, YArray, "blue", "x /m", "y /m", "Challenge 2: Projectile motion model", True)
 
 # chal2ProjPath(10, 42, 9.81, 1, 0.02)
 
@@ -586,5 +589,4 @@ def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
     plt.show()
     
     
-
-chal9ProjPath(30, 20, 2, 9.81, 0.1, 0.007854, 1, 0.1, 0.01)
+#chal9ProjPath(30, 20, 2, 9.81, 0.3, 0.007854, 1, 0.1, 0.01)
