@@ -18,6 +18,60 @@ root.state('zoomed')
 root.configure(bg="#009dba")
 
 def display_challenges():
+    base_frame.pack_forget()
+    menu_frame_blank.pack_forget()
+    menu_frame_challenges.pack_forget()
+    menu_frame_information.pack_forget()
+
+    global challenges_heading_frame
+    challenges_heading_frame = ttk.Frame(root)
+    challenges_heading_frame.pack(side=tk.TOP)
+
+    global chal1_frame
+    chal1_frame = ttk.Frame(root)
+    chal1_frame.pack(side=tk.TOP)
+
+    global chal2_frame
+    chal2_frame = ttk.Frame(root)
+    chal2_frame.pack(side=tk.TOP)
+
+    global chal3_frame
+    chal3_frame = ttk.Frame(root)
+    chal3_frame.pack(side=tk.TOP)
+
+    global chal4_frame
+    chal4_frame = ttk.Frame(root)
+    chal4_frame.pack(side=tk.TOP)
+
+    global chal5_frame
+    chal5_frame = ttk.Frame(root)
+    chal5_frame.pack(side=tk.TOP)
+
+    global chal6_frame
+    chal6_frame = ttk.Frame(root)
+    chal6_frame.pack(side=tk.TOP)
+
+    global chal7_frame
+    chal7_frame = ttk.Frame(root)
+    chal7_frame.pack(side=tk.TOP)
+
+    global chal8_frame
+    chal8_frame = ttk.Frame(root)
+    chal8_frame.pack(side=tk.TOP)
+
+    global chal9_frame
+    chal9_frame = ttk.Frame(root)
+    chal9_frame.pack(side=tk.TOP)
+
+    global back_to_menu_frame
+    back_to_menu_frame = ttk.Frame(root)
+    back_to_menu_frame.pack(side=tk.TOP)
+
+
+    challenges_heading = ttk.Label(challenges_heading_frame, text = "Projectiles Challenges")
+    challenges_heading.config(font=main_font_subheading)
+    challenges_heading.pack(side=tk.LEFT)
+
     plot_button_1 = Button(master = chal1_frame,  
                      command = lambda: plot(chals.chal1ProjPath, [20, 45, 9.81, 2, 0.02]), 
                      height = 1,  
@@ -90,12 +144,18 @@ def display_challenges():
     plot_button_9.config(font=main_font)
     plot_button_9.pack(side=tk.LEFT)    
 
+    back_to_menu_button = Button(master = back_to_menu_frame,  
+                        command = lambda: [hide_challenges_menu(),
+                                           show_main_menu()], 
+                        height = 1,  
+                        width = 24,
+                        text = "Back to Main Menu") 
+    back_to_menu_button.config(font=main_font)
+    back_to_menu_button.pack(side=tk.LEFT)
 
-def hide_menu():
-    base_frame.pack_forget()
-    menu_frame_blank.pack_forget()
-    menu_frame_challenges.pack_forget()
-    menu_frame_information.pack_forget()
+
+def hide_challenges_menu():
+    challenges_heading_frame.pack_forget()
     chal1_frame.pack_forget()
     chal2_frame.pack_forget()
     chal3_frame.pack_forget()
@@ -105,9 +165,10 @@ def hide_menu():
     chal7_frame.pack_forget()
     chal8_frame.pack_forget()
     chal9_frame.pack_forget()
+    back_to_menu_frame.pack_forget()
 
 
-def show_menu():
+def show_main_menu():
     global base_frame
     base_frame = ttk.Frame(root)
     base_frame.pack(side=tk.TOP)
@@ -123,42 +184,6 @@ def show_menu():
     global menu_frame_information
     menu_frame_information = ttk.Frame(root)
     menu_frame_information.pack(side=tk.TOP)
-
-    global chal1_frame
-    chal1_frame = ttk.Frame(root)
-    chal1_frame.pack(side=tk.TOP)
-
-    global chal2_frame
-    chal2_frame = ttk.Frame(root)
-    chal2_frame.pack(side=tk.TOP)
-
-    global chal3_frame
-    chal3_frame = ttk.Frame(root)
-    chal3_frame.pack(side=tk.TOP)
-
-    global chal4_frame
-    chal4_frame = ttk.Frame(root)
-    chal4_frame.pack(side=tk.TOP)
-
-    global chal5_frame
-    chal5_frame = ttk.Frame(root)
-    chal5_frame.pack(side=tk.TOP)
-
-    global chal6_frame
-    chal6_frame = ttk.Frame(root)
-    chal6_frame.pack(side=tk.TOP)
-
-    global chal7_frame
-    chal7_frame = ttk.Frame(root)
-    chal7_frame.pack(side=tk.TOP)
-
-    global chal8_frame
-    chal8_frame = ttk.Frame(root)
-    chal8_frame.pack(side=tk.TOP)
-
-    global chal9_frame
-    chal9_frame = ttk.Frame(root)
-    chal9_frame.pack(side=tk.TOP)
 
     menu_heading = ttk.Label(base_frame, text = "MODELLING PROJECTILES")
     menu_heading.config(font=main_font_heading)
@@ -178,9 +203,16 @@ def show_menu():
 
 
 def plot(function, data):
+    # frames
+    graph_frame = ttk.Frame(root)
+    graph_frame.pack(side=tk.TOP)
+
+    back_frame = ttk.Frame(root)
+    back_frame.pack(side=tk.TOP)
+
+    # figure
     fig = Figure(figsize = (5, 5), 
                     dpi = 100) 
-
 
     plot1 = fig.add_subplot(111)
     # list of squares 
@@ -190,24 +222,37 @@ def plot(function, data):
     # creating the Tkinter canvas 
     # containing the Matplotlib figure 
     canvas = FigureCanvasTkAgg(fig, 
-                                master = root)   
+                                master = graph_frame)   
     canvas.draw() 
 
     # hide menu buttons
-    hide_menu()
+    hide_challenges_menu()
 
     # placing the canvas on the Tkinter window 
-    canvas.get_tk_widget().pack() 
+    canvas.get_tk_widget().pack()
 
     # creating the Matplotlib toolbar 
-    toolbar = NavigationToolbar2Tk(canvas, 
-                                    root) 
-    toolbar.update() 
+    # toolbar = NavigationToolbar2Tk(canvas, 
+    #                                 root) 
+    # toolbar.update() 
 
     # placing the toolbar on the Tkinter window 
-    canvas.get_tk_widget().pack()
+    # canvas.get_tk_widget().pack()
+
+    back_to_challenges_button = Button(master = back_frame,  
+                        command = lambda: [graph_frame.pack_forget(),
+                                           back_frame.pack_forget(),
+                                           display_challenges()], 
+                        height = 1,  
+                        width = 24,
+                        text = "Back to Challenges") 
+    back_to_challenges_button.config(font=main_font)
+    back_to_challenges_button.pack(side=tk.LEFT)
+
+
+
 
 
 if __name__ == "__main__":
-    show_menu()
+    show_main_menu()
     root.mainloop()
