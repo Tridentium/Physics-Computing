@@ -4,6 +4,8 @@ import scipy
 import matplotlib as mp
 import matplotlib.pyplot as plt
 import time
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.ticker import LinearLocator
 
 # PLOT LINE
 
@@ -590,3 +592,59 @@ def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
     
     
 #chal9ProjPath(30, 20, 2, 9.81, 0.3, 0.007854, 1, 0.1, 0.01)
+
+def plt_sphere():
+    ax = fig.add_subplot(projection='3d')
+    
+    # draw sphere
+    theta, phi = np.linspace(0, 2 * np.pi, 40), np.linspace(0, np.pi, 40)
+    THETA, PHI = np.meshgrid(theta, phi)
+    R = 6371000
+    X = R * np.sin(THETA) * np.cos(PHI)
+    Y = R * np.sin(THETA) * np.sin(PHI)
+    Z = R * np.cos(THETA)
+    ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=plt.get_cmap('jet'),linewidth=0, antialiased=False, alpha=0.5)
+    
+    #Start of calculations
+    
+    time = 0
+    timestep = 150
+    
+    u = 5110
+    orbitTime = 5000
+    orbitSpeed = (6371000 * 2 * math.pi)/orbitTime
+    orbitDistance = 6371000 * 2 * math.pi
+    turningSpeed = (timestep/(orbitDistance/orbitSpeed)) * 2 * math.pi
+    
+    theta = math.pi/2
+    phi = math.pi/2
+    XArray = []
+    YArray = []
+    ZArray = []
+    timeArray = []
+    
+    h = 6371000
+    mass = 5
+    
+    while time < 30000:
+        AccelerationH = -((6.67*(10**-11)*5.972*(10**24))/(h**2))/mass
+        h += u * timestep + 0.5 * AccelerationH * timestep**2
+        u += AccelerationH * timestep
+        
+        turningSpeed = (timestep/((h * 2 * math.pi)/orbitSpeed)) * 2 * math.pi
+        theta += turningSpeed
+    
+        if h < 6371000:
+            print("bang")
+            break
+        
+        XArray.append(h * math.sin(theta) * math.cos(phi))
+        YArray.append(h * math.sin(theta) * math.sin(phi))
+        ZArray.append(h * math.cos(theta))
+        
+        timeArray.append(time)
+        time += 0.5
+    ax.scatter3D(XArray, YArray, ZArray, c = (timeArray), cmap = "Greens")
+    plt.show()
+fig = plt.figure()
+plt_sphere() 

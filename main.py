@@ -105,6 +105,7 @@ def hide_menu():
     chal7_frame.pack_forget()
     chal8_frame.pack_forget()
     chal9_frame.pack_forget()
+    
 
 
 def show_menu():
