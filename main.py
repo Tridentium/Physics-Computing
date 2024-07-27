@@ -146,7 +146,7 @@ def display_challenges():
 
     back_to_menu_button = Button(master = back_to_menu_frame,  
                         command = lambda: [hide_challenges_menu(),
-                                           show_main_menu()], 
+                                           show_menu()], 
                         height = 1,  
                         width = 24,
                         text = "Back to Main Menu") 
@@ -262,7 +262,9 @@ def plot(function, data):
 
 def update_plot(projPath, data):
     global canvas
+    print(data)
     for graph in graph_frame.winfo_children():
+        print("hi")
         fig.clear()
         graph.destroy()
     plot1 = fig.add_subplot(111)
@@ -353,5 +355,5 @@ def chal1_user_inputs():
 
 
 if __name__ == "__main__":
-    show_main_menu()
+    show_menu()
     root.mainloop()

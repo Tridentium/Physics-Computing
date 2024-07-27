@@ -90,7 +90,7 @@ def chal2ProjPath(plotFrame, u, theta, g, h, step):
 
 # CHALLENGE 3: Minimum launch speed, low ball trajectory, and high ball trajectory passing through a fixed point
 
-def chal3ProjPath(u, g, h, step, X, Y):    
+def chal3ProjPath(plotFrame, u, g, h, step, X, Y):    
     
     # min graph
     minu = math.sqrt(g) * math.sqrt(Y + math.sqrt(X**2 + Y **2))
@@ -140,7 +140,7 @@ def chal3ProjPath(u, g, h, step, X, Y):
     
     plt.plot(X, Y, "yo")
     plt.text(X, Y, "target")
-    plot(XArray, YArray, "orange", "x /m", "y /m", "Challenge 3: Projectile to hit X,Y", True)
+    plot(plotFrame, XArray, YArray, "orange", "x /m", "y /m", "Challenge 3: Projectile to hit X,Y", True)
     
 # chal3ProjPath(150, 9.81, 0, 0.01, 1000, 300)
 
@@ -647,4 +647,4 @@ def plt_sphere():
     ax.scatter3D(XArray, YArray, ZArray, c = (timeArray), cmap = "Greens")
     plt.show()
 fig = plt.figure()
-plt_sphere() 
+#plt_sphere() 
