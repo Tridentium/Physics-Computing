@@ -147,7 +147,7 @@ def chal3ProjPath(plotFrame, u, g, h, step, X, Y):
 
 
 # CHALLENGE 4: Comparing trajectory to trajectory maximising range given same launch height and launch speed
-def chal4ProjPath(u, h, g, theta):
+def chal4ProjPath(plotFrame, u, h, g, theta):
     
     theta = math.radians(theta)
     # max_r = (u**2 / g) * math.sqrt(1 + ((2 * g * h) / u**2))
@@ -194,7 +194,7 @@ def chal4ProjPath(u, h, g, theta):
         YArray.append(particleY)
         
         time += 0.01
-    plot(XArray, YArray, "r", "x /m", "y /m", "Challenge 4: Trajectory compared with maximised horizontal range", True)   
+    plot(plotFrame, XArray, YArray, "r", "x /m", "y /m", "Challenge 4: Trajectory compared with maximised horizontal range", True)   
 
 # chal4ProjPath(10, 2, 9.81, 60)
 
