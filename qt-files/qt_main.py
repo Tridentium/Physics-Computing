@@ -550,7 +550,7 @@ class Chal7Window(QMainWindow, challenge7Window):
         self.canvas.draw()
 
 
-class Chal8window(QMainWindow, challenge8Window):
+class Chal8Window(QMainWindow, challenge8Window):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
