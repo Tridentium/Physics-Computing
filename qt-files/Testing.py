@@ -201,7 +201,7 @@ def chal4ProjPath(plotFrame, u, h, g, theta):
 
 
 # CHALLENGE 5: Bounding parabola
-def chal5ProjPath(u, g, h, X, Y):
+def chal5ProjPath(plotFrame, u, g, h, X, Y):
     # Min u graph
     minu = math.sqrt(g) * math.sqrt(Y + math.sqrt(X**2 + Y **2))
     theta = math.atan((Y + math.sqrt(X**2 + Y**2))/X)
@@ -330,7 +330,7 @@ def chal5ProjPath(u, g, h, X, Y):
 # CHALLENGE 6: Distance travelled by projectile
 
 # Calculate distance
-def chal6CalcDist(u, h, g, theta):
+def chal6CalcDist(plotFrame, u, h, g, theta):
     higher_bound_int = 0.5*math.log(math.sqrt(1 + math.tan(theta)**2) + math.tan(theta)) + 0.5 * math.tan(theta) * math.sqrt(1 + math.tan(theta) ** 2)
     
     projRange = ((u**2)/g) * (math.sin(theta) * math.cos(theta) + math.cos(theta) * math.sqrt((math.sin(theta))** 2 + (2*g*h)/u**2))
@@ -341,7 +341,7 @@ def chal6CalcDist(u, h, g, theta):
     s = (u**2)/(g * (1 + math.tan(theta)**2)) * (higher_bound_int - lower_bound_int)
     return s
 
-def chal6ProjPath(u, h, g, theta):
+def chal6ProjPath(plotFrame, u, h, g, theta):
     theta = math.radians(theta)
     max_theta = math.asin(1 / math.sqrt(2 + 2 * ((g * h) / u**2)))
     
@@ -401,7 +401,7 @@ def chal6ProjPath(u, h, g, theta):
 
 # CHALLENGE 7: Local maxima and minima data
 
-def chal7ProjPath(u, g):
+def chal7ProjPath(plotFrame, u, g):
     # Right graph
     thetas = [30, 45, 60, 70.5, 78, 85]
     colours = ["blue", "green", "red", "cyan", "purple", "yellow"]
@@ -499,7 +499,7 @@ def chal7ProjPath(u, g):
 
 
 # CHALLENGE 8 - Bouncing ball
-def chal8ProjPath(u, C, theta, h, g, maxBounces, timeStep):
+def chal8ProjPath(plotFrame, u, C, theta, h, g, maxBounces, timeStep):
     theta = math.radians(theta)
     YVelocity = u * math.sin(theta)
     XVelocity = u * math.cos(theta)

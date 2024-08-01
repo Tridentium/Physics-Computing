@@ -5,6 +5,7 @@ from challenges_selector import Ui_MainWindow as challengesWindow
 from challenge1 import Ui_MainWindow as challenge1Window
 from challenge2 import Ui_MainWindow as challenge2Window
 from challenge3 import Ui_MainWindow as challenge3Window
+from challenge4 import Ui_MainWindow as challenge4Window
 import sys
 import Testing as chals
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
@@ -34,6 +35,7 @@ class ChallengesWindow(QMainWindow, challengesWindow):
         self.pushButton_2.clicked.connect(self.open_chal1) # "challenge 1"
         self.pushButton_3.clicked.connect(self.open_chal2) # "challenge 2"
         self.pushButton.clicked.connect(self.open_chal3) # "challenge 3"
+        self.pushButton_5.clicked.connect(self.open_chal4) # "challenge 4"
         
 
     def back(self):
@@ -54,6 +56,11 @@ class ChallengesWindow(QMainWindow, challengesWindow):
     def open_chal3(self):
         self.chal3Window = Chal3Window()
         self.chal3Window.show()
+        self.close()
+        
+    def open_chal4(self):
+        self.chal4Window = Chal4Window()
+        self.chal4Window.show()
         self.close()
 
 
@@ -246,6 +253,70 @@ class Chal3Window(QMainWindow, challenge3Window):
                                                             float(self.YLineEdit.text())])
             else:
                 self.plot(self.graphLayout, chals.chal3ProjPath, [float(self.launc)])
+        except Exception as error:
+            print("An exception occurred:", type(error).__name__)
+            pass     
+
+    def plot(self, function, data):
+        try:
+            self.fig.clear()
+            self.graphLayout.removeWidget(self.canvas)
+            self.graphLayout.update()
+        except:
+            pass
+
+        self.fig = Figure(figsize = (5, 5), 
+                        dpi = 100) 
+        self.plot1 = self.fig.add_subplot(111)
+        function(self.plot1, *data)
+        self.canvas = FigureCanvasQTAgg(self.fig)
+        self.graphLayout.addWidget(self.canvas)   
+        self.canvas.draw()
+
+
+class Chal4Window(QMainWindow, challenge4Window):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.pushButton_4.clicked.connect(self.back) # "back"
+
+        # sliders and line edits
+        self.slider_mode_on = False
+        self.sliderModeCheckBox.toggled.connect(self.slider_mode)
+        self.launchSpeedSlider.setVisible(False)
+        self.launchAngleSlider.setVisible(False)
+        self.gSlider.setVisible(False)
+        self.launchHeightSlider.setVisible(False)
+
+        # generate graph
+        self.pushButton.clicked.connect(self.generateGraph)
+
+    def back(self):
+        self.challengesWindow = ChallengesWindow()
+        self.challengesWindow.show()
+        self.close()
+
+    def slider_mode(self, checked):
+        self.slider_mode_on = checked
+        self.launchSpeedSlider.setVisible(checked)
+        self.launchAngleSlider.setVisible(checked)
+        self.gSlider.setVisible(checked)
+        self.launchHeightSlider.setVisible(checked)
+        self.launchSpeedLineEdit.setVisible(not checked)
+        self.launchAngleLineEdit.setVisible(not checked)
+        self.gLineEdit.setVisible(not checked)
+        self.launchHeightLineEdit.setVisible(not checked)
+
+    def generateGraph(self):
+        try:
+            if not self.slider_mode_on:
+                self.plot(chals.chal4ProjPath, [float(self.launchSpeedLineEdit.text()),
+                                                            float(self.launchAngleLineEdit.text()),
+                                                            float(self.gLineEdit.text()),
+                                                            float(self.launchHeightLineEdit.text())])
+            else:
+                self.plot(self.graphLayout, chals.chal4ProjPath, [float(self.launc)])
         except Exception as error:
             print("An exception occurred:", type(error).__name__)
             pass     
