@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import time
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import LinearLocator
+from matplotlib.figure import Figure
 
 # PLOT LINE
 
@@ -80,8 +81,8 @@ def chal2ProjPath(plotFrame, u, theta, g, h, step):
     for i in XArray:
         YArray.append(h + (i * math.tan(theta)) - ((g / (2 * u**2)) * (1 + math.tan(theta)**2) * i**2))
     
-    plt.plot(XatYHighest, YHighest, "ro")
-    plt.text(XatYHighest, YHighest, "apogee")
+    plotFrame.plot(XatYHighest, YHighest, "ro")
+    plotFrame.text(XatYHighest, YHighest, "apogee")
     plot(plotFrame, XArray, YArray, "blue", "x /m", "y /m", "Challenge 2: Projectile motion model", True)
 
 # chal2ProjPath(10, 42, 9.81, 1, 0.02)
@@ -106,7 +107,7 @@ def chal3ProjPath(plotFrame, u, g, h, step, X, Y):
         YArray.append(h + (i * math.tan(theta)) - ((g / (2 * minu**2)) * (1 + math.tan(theta)**2) * i**2))
     
     
-    plt.plot(XArray, YArray, color="grey")
+    plotFrame.plot(XArray, YArray, color="grey")
     
     # max and min bounding graphs
     a = g / (2 * u**2) * X**2
@@ -126,7 +127,7 @@ def chal3ProjPath(plotFrame, u, g, h, step, X, Y):
     for i in XArray:
         YArray.append(h + (i * math.tan(thetaMax)) - ((g / (2 * u**2)) * (1 + math.tan(thetaMax)**2) * i**2))
     
-    plt.plot(XArray, YArray, color="blue")
+    plotFrame.plot(XArray, YArray, color="blue")
     
     # min display
     XArray = []
@@ -138,8 +139,8 @@ def chal3ProjPath(plotFrame, u, g, h, step, X, Y):
     for i in XArray:
         YArray.append(h + (i * math.tan(thetaMin)) - ((g / (2 * u**2)) * (1 + math.tan(thetaMin)**2) * i**2))
     
-    plt.plot(X, Y, "yo")
-    plt.text(X, Y, "target")
+    plotFrame.plot(X, Y, "yo")
+    plotFrame.text(X, Y, "target")
     plot(plotFrame, XArray, YArray, "orange", "x /m", "y /m", "Challenge 3: Projectile to hit X,Y", True)
     
 # chal3ProjPath(150, 9.81, 0, 0.01, 1000, 300)
@@ -147,7 +148,7 @@ def chal3ProjPath(plotFrame, u, g, h, step, X, Y):
 
 
 # CHALLENGE 4: Comparing trajectory to trajectory maximising range given same launch height and launch speed
-def chal4ProjPath(plotFrame, u, h, g, theta):
+def chal4ProjPath(plotFrame, u, theta, g, h):
     
     theta = math.radians(theta)
     # max_r = (u**2 / g) * math.sqrt(1 + ((2 * g * h) / u**2))
@@ -173,7 +174,7 @@ def chal4ProjPath(plotFrame, u, h, g, theta):
         
         time += 0.01
     
-    plt.plot(XArray, YArray, "b")
+    plotFrame.plot(XArray, YArray, "b")
     
     #Run 2
     time = 0
@@ -227,7 +228,7 @@ def chal5ProjPath(plotFrame, u, g, h, X, Y):
         
         time += 0.01  
     
-    plt.plot(XArray, YArray, color="grey")
+    plotFrame.plot(XArray, YArray, color="grey")
     
     # High and low graphs
     a = g / (2 * u**2) * X**2
@@ -257,7 +258,7 @@ def chal5ProjPath(plotFrame, u, g, h, X, Y):
         
         time += 0.01  
     
-    plt.plot(XArray, YArray, color="blue")
+    plotFrame.plot(XArray, YArray, color="blue")
     
     # Max range
     time = 0
@@ -278,7 +279,7 @@ def chal5ProjPath(plotFrame, u, g, h, X, Y):
         YArray.append(particleY)
         
         time += 0.01
-    plt.plot(XArray, YArray, color="red")  
+    plotFrame.plot(XArray, YArray, color="red")  
     
     # Bounding parabola
     time = 0
@@ -296,7 +297,7 @@ def chal5ProjPath(plotFrame, u, g, h, X, Y):
         YArray.append(particleY)
         
         time += 0.01
-    plt.plot(XArray, YArray, color="pink")
+    plotFrame.plot(XArray, YArray, color="pink")
     
 
     # Display low
@@ -319,11 +320,11 @@ def chal5ProjPath(plotFrame, u, g, h, X, Y):
         
         time += 0.01  
 
-    plt.plot(X, Y, "ro")
+    plotFrame.plot(X, Y, "ro")
     
-    plot(XArray, YArray, "orange", "x /m", "y /m", "Challenge 5: Bounding parabola", True)
+    plot(plotFrame, XArray, YArray, "orange", "x /m", "y /m", "Challenge 5: Bounding parabola", True)
 
-# chal5ProjPath(1.3063*115, 9.81, 0, 1000, 300)
+#chal5ProjPath(1.3063*115, 9.81, 0, 1000, 300)
 
 
 
@@ -369,7 +370,7 @@ def chal6ProjPath(plotFrame, u, h, g, theta):
         
         time += 0.01
     
-    plt.plot(XArray, YArray, "b", label = "s: " + str(round(s, 2)))
+    plotFrame.plot(XArray, YArray, "b", label = "s: " + str(round(s, 2)))
     
     # Calculate s_max
     time = 0
@@ -391,7 +392,7 @@ def chal6ProjPath(plotFrame, u, h, g, theta):
         
         time += 0.01
 
-    plt.plot(XArray, YArray, "r")
+    plotFrame.plot(XArray, YArray, "r")
 
     plot(XArray, YArray, "r", "x /m", "y /m", "Challenge 6: Distance travelled by projectile", True, "s_max: " + str(round(s_max, 2)))
 
@@ -438,26 +439,26 @@ def chal7ProjPath(plotFrame, u, g):
             
             time += 0.01
 
-        plt.subplot(1, 2, 1)
-        plt.title("Challenge 7: y against x for different θ")
-        plt.plot(XArray, YArray, color = colour)
+        plotFrame.subplot(1, 2, 1)
+        plotFrame.title("Challenge 7: y against x for different θ")
+        plotFrame.plot(XArray, YArray, color = colour)
         
         if theta >= math.radians(70.5):
             if theta == math.radians(70.5):
                 T = ((u/g)) * math.sqrt(2)
                 X = u * math.cos(theta) * T
                 Y = 0 + (X * math.tan(theta)) - ((g / (2 * u**2)) * (1 + math.tan(theta)**2) * X**2)
-                plt.plot(X, Y, "ro")
+                plotFrame.plot(X, Y, "ro")
             else:
                 T = ((3 * u)/(2 * g)) * (math.sin(theta) + math.sqrt(math.sin(theta)**2 - (8/9)))
                 X = u * math.cos(theta) * T
                 Y = 0 + (X * math.tan(theta)) - ((g / (2 * u**2)) * (1 + math.tan(theta)**2) * X**2)
-                plt.plot(X, Y, "ro")
+                plotFrame.plot(X, Y, "ro")
                 
                 T = ((3 * u)/(2 * g))*(math.sin(theta)-math.sqrt(math.sin(theta)**2 - (8/9)))
                 X = u * math.cos(theta) * T
                 Y = 0 + (X * math.tan(theta)) - ((g / (2 * u**2)) * (1 + math.tan(theta)**2) * X**2)
-                plt.plot(X, Y, "go")
+                plotFrame.plot(X, Y, "go")
     
     # Left graph
     for thetaID in range(len(thetas)):
@@ -477,24 +478,24 @@ def chal7ProjPath(plotFrame, u, g):
             YArray.append(particleY)
             particleX += 0.01
         
-        plt.subplot(1, 2, 2)
-        plt.title("Challenge 7: range against time for different θ")
-        plt.plot(XArray, YArray, colour)
+        plotFrame.subplot(1, 2, 2)
+        plotFrame.title("Challenge 7: range against time for different θ")
+        plotFrame.plot(XArray, YArray, colour)
         
         if theta >= math.radians(70.5):
             if theta == math.radians(70.5):
                 X = ((u/g)) * math.sqrt(2)
                 Y = math.sqrt(u**2 * X**2 - g * X**3 * u * math.sin(theta) + 0.25 * g**2 * X ** 4)
-                plt.plot(X, Y, "ro")
+                plotFrame.plot(X, Y, "ro")
             else:
                 X = ((3 * u)/(2 * g)) * (math.sin(theta) + math.sqrt(math.sin(theta)**2 - (8/9)))
                 Y = math.sqrt(u**2 * X**2 - g * X**3 * u * math.sin(theta) + 0.25 * g**2 * X ** 4)
-                plt.plot(X, Y, "ro")
+                plotFrame.plot(X, Y, "ro")
                 
                 X = ((3 * u)/(2 * g))*(math.sin(theta)-math.sqrt(math.sin(theta)**2 - (8/9)))
                 Y = math.sqrt(u**2 * X**2 - g * X**3 * u * math.sin(theta) + 0.25 * g**2 * X ** 4)
-                plt.plot(X, Y, "go")
-    plt.show()
+                plotFrame.plot(X, Y, "go")
+    plotFrame.show()
 #chal7ProjPath(10, 10)
 
 
@@ -529,14 +530,14 @@ def chal8ProjPath(plotFrame, u, C, theta, h, g, maxBounces, timeStep):
         
         plot(XArray, YArray, "red", "x /m", "y /m", "Challenge 8: Bounding parabola", True)
         
-        plt.close()
+        plotFrame.close()
         currentIndex += 1
     
 #chal8ProjPath(5, 0.7, 45, 10, 9.81, 6, 0.02)
 
 # Challenge 9 - drag-free model 
 
-def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
+def chal9ProjPath(plotFrame, theta, u, h, g, D, CSA, dA, M, timeStep):
     theta = math.radians(theta)
     time = 0
     
@@ -558,7 +559,7 @@ def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
         
         time += timeStep
         
-    plt.plot(XArray, YArray, color = "blue")
+    plotFrame.plot(XArray, YArray, color = "blue")
     
     
     particleX = 0
@@ -587,19 +588,19 @@ def chal9ProjPath(theta, u, h, g, D, CSA, dA, M, timeStep):
         XArray.append(particleX)
         YArray.append(particleY)
     
-    plt.plot(XArray, YArray, color = "red")
-    plt.show()
+    plotFrame.plot(XArray, YArray, color = "red")
+    plotFrame.show()
     
     
 #chal9ProjPath(30, 20, 2, 9.81, 0.3, 0.007854, 1, 0.1, 0.01)
 
-def plt_sphere():
+def plt_sphere(plotFrame, u, orbitTime, R, m, timestep, simulationLength):
+    fig = plotFrame.figure
     ax = fig.add_subplot(projection='3d')
     
     # draw sphere
     theta, phi = np.linspace(0, 2 * np.pi, 40), np.linspace(0, np.pi, 40)
     THETA, PHI = np.meshgrid(theta, phi)
-    R = 6371000
     X = R * np.sin(THETA) * np.cos(PHI)
     Y = R * np.sin(THETA) * np.sin(PHI)
     Z = R * np.cos(THETA)
@@ -608,12 +609,8 @@ def plt_sphere():
     #Start of calculations
     
     time = 0
-    timestep = 150
-    
-    u = 5110
-    orbitTime = 5000
-    orbitSpeed = (6371000 * 2 * math.pi)/orbitTime
-    orbitDistance = 6371000 * 2 * math.pi
+    orbitSpeed = (R * 2 * math.pi)/orbitTime
+    orbitDistance = R * 2 * math.pi
     turningSpeed = (timestep/(orbitDistance/orbitSpeed)) * 2 * math.pi
     
     theta = math.pi/2
@@ -623,10 +620,10 @@ def plt_sphere():
     ZArray = []
     timeArray = []
     
-    h = 6371000
-    mass = 5
+    h = R
+    mass = m
     
-    while time < 30000:
+    while time < simulationLength:
         AccelerationH = -((6.67*(10**-11)*5.972*(10**24))/(h**2))/mass
         h += u * timestep + 0.5 * AccelerationH * timestep**2
         u += AccelerationH * timestep
@@ -634,7 +631,7 @@ def plt_sphere():
         turningSpeed = (timestep/((h * 2 * math.pi)/orbitSpeed)) * 2 * math.pi
         theta += turningSpeed
     
-        if h < 6371000:
+        if h < R:
             print("bang")
             break
         
@@ -645,6 +642,6 @@ def plt_sphere():
         timeArray.append(time)
         time += 0.5
     ax.scatter3D(XArray, YArray, ZArray, c = (timeArray), cmap = "Greens")
-    plt.show()
+    plotFrame.show()
 fig = plt.figure()
 #plt_sphere() 

@@ -6,6 +6,12 @@ from challenge1 import Ui_MainWindow as challenge1Window
 from challenge2 import Ui_MainWindow as challenge2Window
 from challenge3 import Ui_MainWindow as challenge3Window
 from challenge4 import Ui_MainWindow as challenge4Window
+from challenge4 import Ui_MainWindow as challenge5Window
+from challenge4 import Ui_MainWindow as challenge6Window
+from challenge4 import Ui_MainWindow as challenge7Window
+from challenge4 import Ui_MainWindow as challenge8Window
+from challenge4 import Ui_MainWindow as challenge9Window
+from challenge4 import Ui_MainWindow as challenge10Window
 import sys
 import Testing as chals
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
@@ -86,6 +92,10 @@ class ChallengesWindow(QMainWindow, challengesWindow):
     def open_chal9(self):
         self.chal9Window = Chal9Window()
         self.chal9Window.show()
+        self.close()
+    def open_chal10(self):
+        self.chal10Window = Chal10Window()
+        self.chal10Window.show()
         self.close()
 
 
@@ -690,6 +700,79 @@ class Chal9Window(QMainWindow, challenge9Window):
                                                             float(self.timeStepLineEdit.text())])
             else:
                 self.plot(self.graphLayout, chals.chal9ProjPath, [float(self.launc)])
+        except Exception as error:
+            print("An exception occurred:", type(error).__name__)
+            pass     
+
+    def plot(self, function, data):
+        try:
+            self.fig.clear()
+            self.graphLayout.removeWidget(self.canvas)
+            self.graphLayout.update()
+        except:
+            pass
+
+        self.fig = Figure(figsize = (5, 5), 
+                        dpi = 100) 
+        self.plot1 = self.fig.add_subplot(111)
+        function(self.plot1, *data)
+        self.canvas = FigureCanvasQTAgg(self.fig)
+        self.graphLayout.addWidget(self.canvas)   
+        self.canvas.draw()
+
+
+class Chal10Window(QMainWindow, challenge10Window):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.pushButton_4.clicked.connect(self.back) # "back"
+
+        # sliders and line edits
+        self.slider_mode_on = False
+        self.sliderModeCheckBox.toggled.connect(self.slider_mode)
+        self.uSlider.setVisible(False)
+        self.orbitTimeSlider.setVisible(False)
+        self.RSlider.setVisible(False)
+        self.mSlider.setVisible(False)
+        self.timeStepSlider.setVisible(False)
+        self.simulationLengthSlider.setVisible(False)
+
+        # generate graph
+        self.pushButton.clicked.connect(self.generateGraph)
+
+    def back(self):
+        self.challengesWindow = ChallengesWindow()
+        self.challengesWindow.show()
+        self.close()
+
+    def slider_mode(self, checked):
+        self.slider_mode_on = checked
+        self.uSlider.setVisible(checked)
+        self.orbitTimeSlider.setVisible(checked)
+        self.RSlider.setVisible(checked)
+        self.mSlider.setVisible(checked)
+        self.timeStepSlider.setVisible(checked)
+        self.simulationLengthSlider.setVisible(checked)
+        
+        self.uLineEdit.setVisible(not checked)
+        self.orbitTimeLineEdit.setVisible(not checked)
+        self.RLineEdit.setVisible(not checked)
+        self.mLineEdit.setVisible(not checked)
+        self.timeStepLineEdit.setVisible(not checked)
+        self.simulationLengthLineEdit.setVisible(not checked)
+
+    def generateGraph(self):
+        try:
+            if not self.slider_mode_on:
+                self.plot(chals.plt_sphere, [float(self.uLineEdit.text()),
+                                                            float(self.orbitTimeLineEdit.text()),
+                                                            float(self.RLineEdit.text()),
+                                                            float(self.mLineEdit.text()),
+                                                            float(self.timeStepLineEdit.text()),
+                                                            float(self.simulationLengthLineEdit.text())])
+            else:
+                self.plot(self.graphLayout, chals.plt_sphere, [float(self.launc)])
         except Exception as error:
             print("An exception occurred:", type(error).__name__)
             pass     

@@ -209,6 +209,21 @@ class Ui_MainWindow(object):
         self.pushButton_18.setDefault(True)
         self.pushButton_18.setObjectName("pushButton_18")
         self.verticalLayout.addWidget(self.pushButton_18)
+        self.pushButton_10 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Meiryo UI")
+        font.setPointSize(20)
+        self.pushButton_10.setFont(font)
+        self.pushButton_10.setAutoFillBackground(False)
+        self.pushButton_10.setStyleSheet("QPushButton {\n"
+"    border: 2px solid;\n"
+"    border-radius: 8px;\n"
+"    background-color: #a1e4ff;\n"
+"}")
+        self.pushButton_10.setCheckable(True)
+        self.pushButton_10.setDefault(True)
+        self.pushButton_10.setObjectName("pushButton_10")
+        self.verticalLayout.addWidget(self.pushButton_10)
         self.frame.raise_()
         self.verticalLayoutWidget_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
@@ -237,3 +252,4 @@ class Ui_MainWindow(object):
         self.pushButton_8.setText(_translate("MainWindow", "7: Range Maxima and Minima"))
         self.pushButton_9.setText(_translate("MainWindow", "8: Trajectory with Bounces"))
         self.pushButton_18.setText(_translate("MainWindow", "9: Model Incorporating Air Resistance"))
+        self.pushButton_10.setText(_translate("MainWindow", "10: 3D Model Using Orbital Gravity"))
