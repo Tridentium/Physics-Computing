@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>15</y>
+      <width>811</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="challengeTitleLabel">
+       <property name="font">
+        <font>
+         <family>Lucida Handwriting</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	border: 2px solid;
+	border-radius: 8px;
+	background-color: #73d7ff;
+}</string>
+       </property>
+       <property name="text">
+        <string>Extension: Satellite Orbitting a Spherical Planet Calculation Code</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color: #ccfcff
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="backButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>131</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 2px solid;
+	border-radius: 8px;
+	background-color: #a1e4ff;
+}</string>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>240</y>
+       <width>491</width>
+       <height>521</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>u /= 3.6                # convert from km/h to m/s
+orbitTime *= 60         # convert from mins to s
+orbitRadius *= 1000     # convert from km to m
+planetMass *= (10**21)  # convert from standard form
+planetRadius *= 1000    # convert from km to m
+
+# draw sphere
+theta, phi = np.linspace(0, 2 * np.pi, 40), np.linspace(0, np.pi, 40)
+THETA, PHI = np.meshgrid(theta, phi)
+X = planetRadius * np.sin(THETA) * np.cos(PHI)
+Y = planetRadius * np.sin(THETA) * np.sin(PHI)
+Z = planetRadius * np.cos(THETA)
+
+# start of calculations
+time = 0
+orbitDistance = orbitRadius * 2 * math.pi
+orbitSpeed = orbitDistance/orbitTime
+turningSpeed = (step/(orbitDistance/orbitSpeed)) * 2 * math.pi
+
+theta = math.pi/2
+phi = math.pi/2
+XArray = []
+YArray = []
+ZArray = []
+timeArray = []</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>220</y>
+       <width>491</width>
+       <height>521</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>h = orbitRadius
+crashed = False
+
+while time &lt; simulationLength: 
+    G = 6.67430 * (10 ** -11)
+    AccelerationH = -1 * ((G * planetMass) / (h**2))
+    h += u * step + 0.5 * AccelerationH * step**2
+    u += AccelerationH * step
+    
+    turningSpeed = (step/((h * 2 * math.pi)/orbitSpeed)) * 2 * math.pi
+    theta += turningSpeed
+
+    if h &lt; planetRadius:   # satellite crashed into Earth
+        crashed = True
+        break
+    
+    XArray.append(h * math.sin(theta) * math.cos(phi))
+    YArray.append(h * math.sin(theta) * math.sin(phi))
+    ZArray.append(h * math.cos(theta))
+    
+    timeArray.append(time)
+    time += step</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>270</y>
+       <width>3</width>
+       <height>470</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {background-color:  #838285; max-width: 1px; min-width:1px;}</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>961</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Below are the calculations for this extension in Python 3.12, with &quot;np&quot; being the numpy library. (The line beginning &quot;h = orbitRadius&quot; continues from after the line &quot;TimeArray = []&quot;.)
+
+&quot;u&quot; is the launch speed and &quot;step&quot; is the timestep.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <zorder>frame</zorder>
+   <zorder>verticalLayoutWidget_2</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

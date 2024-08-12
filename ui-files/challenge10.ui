@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>1081</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color: #ccfcff
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="backButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>131</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 2px solid;
+	border-radius: 8px;
+	background-color: #a1e4ff;
+}</string>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>160</y>
+       <width>271</width>
+       <height>561</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="inputLayout" stretch="0,0,1,1,0,0,0,1,2,0,0,0,1,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="textModeCheckBox">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Manual Text Input Mode</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line1">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="launchSpeedLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Satellite Launch Speed /kmh⁻¹</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="launchSpeedSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="launchSpeedSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="launchSpeedLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Enter satellite launch speed here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line2">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="orbitTimeLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Satellite Orbit Time /mins</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="orbitTimeSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="orbitTimeSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="orbitTimeLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter satellite orbit time here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line3">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="orbitRadiusLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Satellite Orbit Radius /km</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="orbitRadiusSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="orbitRadiusSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="orbitRadiusLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter satellite orbit radius here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line4">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="massLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Planet Mass /kg</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="setEarthMassButton">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	border: 1px solid;
+	border-radius: 4px;
+	background-color:#b1defa;
+}</string>
+        </property>
+        <property name="text">
+         <string>Set planet mass to Earth's</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="massSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="massSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="massLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter planet mass here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line5">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="planetRadiusLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Planet Radius /km</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="setEarthRadiusButton">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	border: 1px solid;
+	border-radius: 4px;
+	background-color:#b1defa;
+}</string>
+        </property>
+        <property name="text">
+         <string>Set planet radius to Earth's</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="planetRadiusSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="planetRadiusSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="planetRadiusLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter planet radius here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line5_3">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Time Step /s</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="timeStepSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="timeStepSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="timeStepLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter time step here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="Line5_2">
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background-color: #838285;
+	min-height:1px;
+	max-height:1px;
+}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="maxSimLengthLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string>Max Simulation Length /s</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="maxSimLengthSlider">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal {border: 1px solid #3256a8;
+height: 8px;
+background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #85c8f2, stop: 1 #1293e3);}
+
+QSlider::handle:horizontal {border: 1px solid #3256a8;
+background: #073191;
+width: 10px;
+height: 10px;
+border-radius: 5px;}</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="maxSimLengthSliderLabel">
+        <property name="font">
+         <font>
+          <family>Meiryo UI</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="maxSimLengthLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Enter max simulation length</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>661</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="graphLayout"/>
+    </widget>
+    <widget class="QPushButton" name="infoButton">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>20</y>
+       <width>131</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>24</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 2px solid;
+	border-radius: 8px;
+	background-color: #a1e4ff;
+}</string>
+     </property>
+     <property name="text">
+      <string>Info</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>710</x>
+       <y>150</y>
+       <width>291</width>
+       <height>581</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+	border-radius: 8px;
+	background-color: #a1e4ff;
+}</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>10</y>
+       <width>671</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="challengeTitleLabel">
+        <property name="font">
+         <font>
+          <family>Lucida Handwriting</family>
+          <pointsize>22</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	border: 2px solid;
+	border-radius: 8px;
+	background-color: #73d7ff;
+}</string>
+        </property>
+        <property name="text">
+         <string>Extension: Satellite Orbitting a Spherical Planet</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QListWidget" name="analyticsListWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>700</y>
+       <width>661</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+	border-radius: 8px;
+	background-color: #a1e4ff;
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="simEndCauseLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>704</y>
+       <width>641</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Meiryo UI</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {background-color: #a1e4ff;}</string>
+     </property>
+     <property name="text">
+      <string>Simulation End Cause:</string>
+     </property>
+    </widget>
+    <zorder>listWidget</zorder>
+    <zorder>backButton</zorder>
+    <zorder>verticalLayoutWidget</zorder>
+    <zorder>verticalLayoutWidget_3</zorder>
+    <zorder>infoButton</zorder>
+    <zorder>verticalLayoutWidget_2</zorder>
+    <zorder>analyticsListWidget</zorder>
+    <zorder>simEndCauseLabel</zorder>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

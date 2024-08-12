@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="prefix">
+    <file>bounce_image3.png</file>
+    <file>bounce_image2.png</file>
+    <file>bounce_image.png</file>
+  </qresource>
+</RCC>
