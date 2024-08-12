@@ -1,3 +1,6 @@
+# BPhO Computational Challenge 2024 - Modelling Projectiles
+# By Mantas Robinson and Bert Chun Chang
+
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
 from title import Ui_MainWindow as mainWindow
