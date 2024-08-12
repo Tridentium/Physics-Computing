@@ -112,5 +112,5 @@ class Ui_MainWindow(object):
 "\n"
 "Using Newton\'s law of gravitation, the satellite\'s acceleration towards to the planet is calculated at each time step and the satellite\'s speed is also updated. SUVAT equations can then be used to find the satellite\'s position, and it is checked whether the satellite has hit the planet. These position values are saved to arrays, and are then displayed.\n"
 "\n"
-"The satellite\'s path begins with the lighter blue colour, and ends with the darker purple colour. Output information is rounded to 5 decimal places where necessary."))
+"The satellite\'s path begins with the lighter blue colour, and ends with the darker purple colour. Output information is rounded to 5 decimal places where necessary. Also note that this model is interactive, and the view can be dragging the graph."))
         self.codeButton.setText(_translate("MainWindow", "Code"))
