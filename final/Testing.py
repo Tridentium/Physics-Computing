@@ -736,7 +736,7 @@ def extensionPath(plotFrame, u, orbitTime, orbitRadius, planetMass, planetRadius
         
         while time < simulationLength: 
             G = 6.67430 * (10 ** -11)
-            AccelerationH = -1 * ((G * planetMass) / (h**2))
+            AccelerationH = -1 * ((G * planetMass) / (h**2))       # For simplicity, we assume that the mass of the satellite is 1 kg.
             h += u * step + 0.5 * AccelerationH * step**2
             u += AccelerationH * step
             
