@@ -117,7 +117,7 @@
        <x>40</x>
        <y>140</y>
        <width>961</width>
-       <height>561</height>
+       <height>591</height>
       </rect>
      </property>
      <property name="font">
@@ -135,7 +135,7 @@ The path of the satellite involved solving for its movement components, the rota
 
 Using Newton's law of gravitation, the satellite's acceleration towards to the planet is calculated at each time step and the satellite's speed is also updated. SUVAT equations can then be used to find the satellite's position, and it is checked whether the satellite has hit the planet. These position values are saved to arrays, and are then displayed.
 
-The satellite's path begins with the lighter blue colour, and ends with the darker purple colour. Output information is rounded to 5 decimal places where necessary.</string>
+The satellite's path begins with the lighter blue colour, and ends with the darker purple colour. Output information is rounded to 5 decimal places where necessary. Also note that this graph is interactive - try dragging the graph!</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -173,16 +173,6 @@ The satellite's path begins with the lighter blue colour, and ends with the dark
    </widget>
    <zorder>frame</zorder>
    <zorder>verticalLayoutWidget_2</zorder>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1024</width>
-     <height>26</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
