@@ -394,7 +394,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.backButton.setText(_translate("MainWindow", "Back"))
-        self.textModeCheckBox.setText(_translate("MainWindow", "Manual Text Input Mode"))
+        self.textModeCheckBox.setText(_translate("MainWindow", "Manual Text Input"))
         self.launchSpeedLabel.setText(_translate("MainWindow", "Launch Speed /ms⁻¹"))
         self.launchSpeedLineEdit.setPlaceholderText(_translate("MainWindow", "Enter launch speed here"))
         self.label_3.setText(_translate("MainWindow", "Launch Angle /°"))
