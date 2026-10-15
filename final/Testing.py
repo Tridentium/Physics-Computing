@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
+
 # Plot the graph
 def plot(plotFrame, x, y, colour, x_label, y_label, title, graphLabel = None, xlim = 0, ylim = 0):
     plotFrame.plot(x, y, color=colour, label = graphLabel)
